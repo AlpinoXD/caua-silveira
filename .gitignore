@@ -1,0 +1,13 @@
+node_modules/
+site/dist/
+site/.netlify/
+.netlify/
+*.zip
+
+# direções de logo descartadas e capturas originais em PNG (o site usa as versões em webp)
+identidade-visual/logo-opcoes*.html
+identidade-visual/assets/projetos/
+
+# capturas de trabalho; as do README ficam em docs/imagens
+docs/*.jpg
+docs/*.png

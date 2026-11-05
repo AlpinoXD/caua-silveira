@@ -1,0 +1,31 @@
+.projeto { padding: 120px clamp(16px, 6vw, 96px) 40px; }
+.projeto-vazio { min-height: 80vh; display: grid; align-content: center; gap: 24px; }
+.projeto-voltar {
+  display: inline-flex; align-items: center; min-height: 44px; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--cinza);
+  transition: color 200ms ease, transform 200ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .projeto-voltar:hover { color: var(--gelo); transform: translateX(-4px); } }
+.projeto-cabeca { display: grid; gap: 18px; justify-items: start; max-width: 980px; margin: 32px 0 clamp(56px, 9vh, 96px); }
+.projeto-cabeca h1 { font-size: clamp(56px, 10vw, 160px); }
+.projeto-tipo { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; color: var(--cinza); }
+.projeto-descricao { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.6; color: #D6D6D6; max-width: 58ch; }
+.projeto-aviso { font-size: 14px; color: var(--cinza); border-left: 2px solid var(--aceso); padding-left: 12px; }
+
+.projeto-galeria { display: grid; gap: clamp(20px, 3vw, 40px); }
+.projeto-tela { border-radius: 14px; overflow: hidden; background: var(--superficie); box-shadow: 0 0 0 1px rgba(242, 242, 242, .07), 0 40px 100px -40px rgba(115, 3, 13, .8); }
+.projeto-tela img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+
+.projeto-celular { margin-top: clamp(64px, 10vh, 120px); display: grid; gap: 28px; }
+.projeto-celulares { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 2vw, 28px); }
+.celular { border-radius: 28px; padding: 8px; background: #1A1A1A; box-shadow: 0 0 0 1px rgba(242, 242, 242, .08), 0 30px 60px -30px #000; }
+.celular img { width: 100%; height: auto; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; border-radius: 21px; }
+
+.projeto-proximo {
+  display: grid; gap: 10px; margin-top: clamp(80px, 12vh, 140px); padding: 40px 0; border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha);
+}
+.projeto-proximo .condensada { font-size: clamp(40px, 7vw, 110px); transition: color 250ms ease, transform 300ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .projeto-proximo:hover .condensada { color: var(--aceso); transform: translateX(10px); } }
+
+@media (max-width: 819px) {
+  .projeto-celulares { grid-template-columns: repeat(2, 1fr); }
+}

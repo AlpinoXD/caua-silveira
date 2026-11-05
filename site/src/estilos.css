@@ -1,0 +1,111 @@
+@font-face { font-family: Archivo; src: url(/fontes/Archivo.ttf); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url(/fontes/JetBrainsMono.ttf); font-weight: 100 800; font-display: swap; }
+
+/* tokens do manual de marca */
+:root {
+  --preto: #0D0D0D;
+  --gelo: #F2F2F2;
+  --vinho: #73030D;
+  --rosado: #732F3B;
+  --aceso: #D11A2A;
+  --cinza: #8C8C8C;
+  --superficie: #151515;
+  --linha: #262626;
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ease-in-out: cubic-bezier(.77, 0, .175, 1);
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { overflow-x: clip; background: var(--preto); scroll-padding-top: 84px; }
+body { background: var(--preto); color: var(--gelo); font-family: Archivo, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--gelo); outline-offset: 3px; }
+::selection { background: var(--aceso); color: var(--gelo); }
+
+.condensada { font-stretch: 62.5%; font-weight: 900; text-transform: uppercase; line-height: .86; }
+.rotulo { font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--cinza); }
+.rotulo b { color: var(--aceso); font-weight: 500; }
+
+/* revelação na rolagem, uma vez por elemento */
+[data-revelar] { opacity: 0; transform: translateY(18px); transition: opacity 700ms var(--ease-out), transform 800ms var(--ease-out); transition-delay: calc(var(--i, 0) * 70ms); }
+[data-revelar][data-visivel] { opacity: 1; transform: none; }
+
+/* ---------- cabeçalho fixo */
+.cabecalho {
+  position: fixed; inset: 0 0 auto; z-index: 300; height: 84px; padding: 0 clamp(16px, 4vw, 48px);
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(var(--preto) 30%, rgba(13, 13, 13, 0));
+}
+/* 200 px é o mínimo do logotipo no manual de marca; abaixo disso os floreios viram textura */
+.cabecalho .logo-completo { width: 200px; height: auto; }
+.cabecalho .logo-mono { display: none; width: 44px; height: 44px; border-radius: 10px; }
+.cabecalho .logo { transition: opacity 300ms ease, visibility 0s; }
+html[data-logo-no-topo] .cabecalho .logo { opacity: 0; visibility: hidden; transition: opacity 300ms ease, visibility 0s 300ms; }
+html[data-intro] .ta-logo { visibility: hidden; }
+.cab-direita { display: flex; align-items: center; gap: clamp(12px, 2.4vw, 32px); }
+.cab-links { display: flex; gap: 28px; }
+.cab-links a { position: relative; display: inline-flex; align-items: center; min-height: 44px; font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #CFCFCF; transition: color 200ms ease; }
+.cab-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 10px; height: 1px; background: var(--aceso); transform: scaleX(0); transform-origin: right; transition: transform 300ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .cab-links a:hover { color: var(--gelo); }
+  .cab-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+}
+.cab-menu { display: none; width: 44px; height: 44px; place-content: center; gap: 6px; border: 1px solid var(--linha); border-radius: 50%; }
+.cab-menu span { display: block; width: 16px; height: 1.5px; background: var(--gelo); transition: transform 250ms var(--ease-out); }
+.cab-menu[aria-expanded='true'] span:first-child { transform: translateY(3.75px) rotate(45deg); }
+.cab-menu[aria-expanded='true'] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+
+.btn-whats {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border-radius: 999px;
+  background: var(--aceso); color: var(--gelo); font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  transition: transform 160ms var(--ease-out), box-shadow 200ms ease;
+}
+.btn-whats .ponto { width: 7px; height: 7px; border-radius: 50%; background: var(--gelo); animation: respira 2.4s ease-in-out infinite; }
+@keyframes respira { 50% { opacity: .35; } }
+.btn-whats:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-whats:hover { box-shadow: 0 0 0 4px rgba(209, 26, 42, .25), 0 8px 30px -6px rgba(209, 26, 42, .6); }
+}
+
+@media (max-width: 819px) {
+  .cabecalho { height: 72px; }
+  /* abaixo de 200 px de largura o manual de marca pede o monograma no lugar do logotipo */
+  .cabecalho .logo-completo { display: none; }
+  .cabecalho .logo-mono { display: block; }
+  .cab-menu { display: grid; }
+  .btn-whats { padding: 0 16px; }
+  .cab-links {
+    position: absolute; top: 72px; left: 12px; right: 12px; flex-direction: column; gap: 0; padding: 8px 20px;
+    background: rgba(21, 21, 21, .96); border: 1px solid var(--linha); border-radius: 18px; backdrop-filter: blur(10px);
+    opacity: 0; transform: translateY(-8px) scale(.98); transform-origin: top right; pointer-events: none;
+    transition: opacity 200ms var(--ease-out), transform 250ms var(--ease-out);
+  }
+  .cab-links[data-aberto] { opacity: 1; transform: none; pointer-events: auto; }
+  .cab-links a { min-height: 56px; font-size: 13px; border-bottom: 1px solid var(--linha); }
+  .cab-links a:last-child { border-bottom: 0; }
+}
+
+/* ---------- abertura da vitrine */
+.projetos-abertura { display: grid; gap: 14px; padding: clamp(96px, 14vh, 160px) clamp(16px, 6vw, 96px) 0; }
+.projetos-abertura h2 { font-size: clamp(48px, 8vw, 128px); }
+.projetos-dica { color: var(--cinza); font-size: 15px; }
+
+/* ---------- cortina entre páginas */
+.cortina {
+  position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; pointer-events: none; transform: translateY(100%);
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(115, 3, 13, .7), transparent 70%), var(--preto);
+}
+.cortina svg { width: clamp(96px, 11vw, 150px); height: auto; overflow: visible; }
+.cortina path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.cortina .s { stroke-width: 2; }
+.cortina .c { fill-opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-revelar] { transform: none; transition: opacity 400ms ease; }
+  .btn-whats .ponto { animation: none; }
+}
