@@ -75,4 +75,5 @@ Fontes: **Archivo** (condensada nos títulos, normal no texto), **JetBrains Mono
 - Fontes Archivo, JetBrains Mono e Monsieur La Doulaise: Google Fonts, licença SIL Open Font License.
 - Efeito do título do contato inspirado no componente TrueFocus do [React Bits](https://reactbits.dev).
 - Telas da Estalagem Villa Serrana capturadas do [guia publicado](https://villa-serrana-guia.netlify.app).
-- Fermento & Forno, Navalha Barbearia e Raiz Fisioterapia são projetos conceito, não sites de clientes reais.
+- Telas da Mundo dos Aromas capturadas do [catálogo publicado](https://mundo-dos-aromas.netlify.app).
+- Navalha Barbearia e Raiz Fisioterapia são projetos conceito, não sites de clientes reais.

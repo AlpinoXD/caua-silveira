@@ -27,6 +27,15 @@ Rascunho para a sessão do site. Tom: confiante, direto, jovem sem ser informal 
 - Descrição longa (página do projeto): Um guia digital para os hóspedes da Estalagem Villa Serrana. Reúne o chalé, os horários, a lenha, os mirantes e onde comer bem por perto. Tem um mapa interativo da serra e uma maquete 3D do chalé, que dá para girar e ver à noite, com a lareira acesa.
 - Telas: `assets/projetos/villa-serrana/` (desktop 2880×1800 e celular 1170×2532).
 
+### Mundo dos Aromas
+
+- Tipo: Catálogo de atacado
+- Local: Santa Catarina
+- Link: https://mundo-dos-aromas.netlify.app
+- Descrição curta (card): O lojista cadastra o CNPJ e vê os preços de atacado em todo o catálogo.
+- Descrição longa (página do projeto): Um catálogo de atacado de incensos, velas, óleos essenciais, sabonetes e incensários para lojas e revendedores. As categorias giram numa roda que dá para arrastar, as marcas têm uma lista própria e o catálogo tem filtros por categoria e por marca. Os preços aparecem para quem cadastra o CNPJ da loja, e o pedido sai pelo site ou pelo WhatsApp.
+- Telas: `site/public/projetos/mundo-dos-aromas/` (sem as seções Sobre e Contato, que ainda têm dados pendentes do cliente).
+
 ### Projetos conceito (provisórios)
 
 - Etiqueta no card: CONCEITO
